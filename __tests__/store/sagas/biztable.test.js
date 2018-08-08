@@ -45,7 +45,8 @@ describe('bizToolbar saga', () => {
     });
 
     /* 测试获取数据 */
-    test('request data, success and fail', () => {
+    test('request data, check success and fail', () => {
+        /* 当前的业务状态 */
         const state = {
             bizToolbar: {
                 keywords: 'some keywords'
@@ -59,15 +60,20 @@ describe('bizToolbar saga', () => {
         };
         const gen = cloneableGenerator(saga.onGetBizTableData)();
 
+        /* 1. 是否调用了正确的 selector 来获得请求时要发送的参数 */
         expect(gen.next().value).toEqual(select(getBizToolbar));
         expect(gen.next(state.bizToolbar).value).toEqual(select(getBizTable));
+
+        /* 2. 是否调用了 api 层 */
         const callEffect = gen.next(state.bizTable).value;
         expect(callEffect['CALL'].fn).toBe(api.getBizTableData);
+        /* 调用 api 层参数是否传递正确 */
         expect(callEffect['CALL'].args[0]).toEqual({
             keywords: 'some keywords',
             paging: {skip: 0, max: 15}
         });
 
+        /* 3. 模拟正确返回分支 */
         const successBranch = gen.clone();
         const successRes = {
             items: [
@@ -76,11 +82,14 @@ describe('bizToolbar saga', () => {
             ],
             total: 2
         };
-        expect(successBranch.next(successRes).value).toEqual(put(actions.putBizTableDataSuccessResult(successRes)));
+        expect(successBranch.next(successRes).value).toEqual(
+            put(actions.putBizTableDataSuccessResult(successRes)));
         expect(successBranch.next().done).toBe(true);
 
+        /* 4. 模拟错误返回分支 */
         const failBranch = gen.clone();
-        expect(failBranch.throw(new Error('模拟产生异常')).value).toEqual(put(actions.putBizTableDataFailResult()));
+        expect(failBranch.throw(new Error('模拟产生异常')).value).toEqual(
+            put(actions.putBizTableDataFailResult()));
         expect(failBranch.next().done).toBe(true);
     });
 });

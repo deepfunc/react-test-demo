@@ -2,6 +2,7 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'seamless-immutable';
 import * as type from '../types/bizTable';
 
+/* 默认状态 */
 export const defaultState = Immutable({
     loading: false,
     pagination: {
@@ -16,6 +17,7 @@ export default handleActions(
     {
         [type.BIZ_TABLE_GET_REQ]: (state) => state.set('loading', true),
 
+        /* 处理获得数据成功 */
         [type.BIZ_TABLE_GET_RES_SUCCESS]: (state, {payload}) => {
             return state.merge(
                 {

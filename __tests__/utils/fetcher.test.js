@@ -67,7 +67,8 @@ describe('fetcher', () => {
 
         const headers = new Headers();
         headers.append('authorization', 'Basic Auth');
-        return expect(fetcher.getJSON('http://some/test', {a: '123', b: 456}, headers)).resolves.toBe(true);
+        return expect(fetcher.getJSON(
+            'http://some/test', {a: '123', b: 456}, headers)).resolves.toBe(true);
     });
 
     /* 测试 postJSON，类似 getJSON 的方式将以上几种情况结合起来 */

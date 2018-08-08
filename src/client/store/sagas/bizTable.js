@@ -13,6 +13,7 @@ export function* watchBizTableFlow() {
 }
 
 export function* onGetBizTableData() {
+    /* 先获取 api 调用需要的参数：关键字、分页信息等 */
     const {keywords} = yield select(getBizToolbar);
     const {pagination} = yield select(getBizTable);
 
@@ -24,9 +25,12 @@ export function* onGetBizTableData() {
     };
 
     try {
+        /* 调用 api */
         const result = yield call(api.getBizTableData, payload);
+        /* 正常返回 */
         yield put(actions.putBizTableDataSuccessResult(result));
     } catch (err) {
+        /* 错误返回 */
         yield put(actions.putBizTableDataFailResult());
     }
 }

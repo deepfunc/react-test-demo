@@ -31,7 +31,9 @@ describe('BizTable component', () => {
 
     /* 测试是否渲染了正确的功能子组件 */
     test('should render table and pagination', () => {
+        /* 是否渲染了 Table 组件 */
         expect(defaultWrapper.find(Table).exists()).toBe(true);
+        /* 是否渲染了 分页器 组件，样式是否正确（mini） */
         expect(defaultWrapper.find('.ant-table-pagination.mini').exists()).toBe(true);
     });
 
@@ -57,6 +59,7 @@ describe('BizTable component', () => {
     test('when change pagination of table, should updateParams', () => {
         const table = defaultWrapper.find(Table);
         table.props().onChange({current: 2, pageSize: 25});
-        expect(defaultProps.updateParams.lastCall.args[0]).toEqual({paging: {current: 2, pageSize: 25}});
+        expect(defaultProps.updateParams.lastCall.args[0])
+            .toEqual({paging: {current: 2, pageSize: 25}});
     });
 });

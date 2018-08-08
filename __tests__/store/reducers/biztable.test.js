@@ -3,7 +3,7 @@ import reducer, { defaultState } from '@/store/reducers/bizTable';
 
 /* 测试 bizTable reducer */
 describe('bizTable reducer', () => {
-    /* 测试未指定 state 参数情况下返回缺省 state */
+    /* 测试未指定 state 参数情况下返回当前缺省 state */
     test('should return the default state', () => {
         expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual(defaultState);
     });
@@ -21,6 +21,7 @@ describe('bizTable reducer', () => {
 
     /* 测试处理正常数据结果 */
     test('should handle successful data response', () => {
+        /* 模拟返回数据结果 */
         const payload = {
             items: [
                 {id: 1, code: '1'},
@@ -28,6 +29,7 @@ describe('bizTable reducer', () => {
             ],
             total: 2
         };
+        /* 期望返回的状态 */
         const expectedState = defaultState
             .setIn(['pagination', 'total'], payload.total)
             .set('data', payload.items)
@@ -52,7 +54,7 @@ describe('bizTable reducer', () => {
         ).toEqual(expectedState);
     });
 
-    /* 测试处理更新 table 参数 */
+    /* 测试处理更新 table 参数（分页） */
     test('should handle updating of table params', () => {
         const payload = {
             paging: {current: 3, pageSize: 40}
