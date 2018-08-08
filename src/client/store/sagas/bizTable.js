@@ -12,7 +12,7 @@ export function* watchBizTableFlow() {
     ]);
 }
 
-function* onGetBizTableData() {
+export function* onGetBizTableData() {
     const {keywords} = yield select(getBizToolbar);
     const {pagination} = yield select(getBizTable);
 
@@ -31,11 +31,11 @@ function* onGetBizTableData() {
     }
 }
 
-function* onReloadBizTableData() {
+export function* onReloadBizTableData() {
     const {pagination} = yield select(getBizTable);
     yield put(actions.updateBizTableParams({paging: {current: 1, pageSize: pagination.pageSize}}));
 }
 
-function* onUpdateBizTableParams() {
+export function* onUpdateBizTableParams() {
     yield put(actions.getBizTableData());
 }

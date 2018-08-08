@@ -24,5 +24,7 @@ module.exports = {
     setupFiles: [
         '<rootDir>/__tests__/setup/enzyme-setup.js'
     ],
+    /* JSDom 11.12 causes SecurityError: localStorage is not available for opaque origins */
+    testURL: 'http://localhost:3000',
     globals: {}
 };

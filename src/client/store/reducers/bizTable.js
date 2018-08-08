@@ -2,7 +2,7 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'seamless-immutable';
 import * as type from '../types/bizTable';
 
-const defaultValue = Immutable({
+export const defaultState = Immutable({
     loading: false,
     pagination: {
         current: 1,
@@ -38,5 +38,5 @@ export default handleActions(
             );
         }
     },
-    defaultValue
+    defaultState
 );
