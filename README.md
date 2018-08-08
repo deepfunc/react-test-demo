@@ -8,7 +8,7 @@
 
 ## 项目用到的技术框架
 
-该项目采用 `react` 技术栈，用到的主要框架包括：`react`、`redux`、`react-redux`、`react-actions`、`reselect`、`redux-saga`、`seamless-immutable`、`antd`。
+该项目采用 `react` 技术栈，用到的主要框架包括：`react`、`redux`、`react-redux`、`redux-actions`、`reselect`、`redux-saga`、`seamless-immutable`、`antd`。
 
 
 
@@ -43,7 +43,7 @@
 
 中间 `store` 中的内容都是 `redux` 相关的，看名称应该都能知道意思了。
 
-具体的代码查看 [这里](https://github.com/deepfunc/react-test-demo)。
+具体的代码请看 [这里](https://github.com/deepfunc/react-test-demo)。
 
 
 
@@ -62,7 +62,7 @@
 
 接下来，我们就开始编写具体的测试用例代码了，下面会针对每个层面给出代码片段和解析。那么我们先从 `actions` 开始吧。
 
-> 为使文章尽量简短、清晰，下面的代码片段不是每个文件的完整内容，完整内容可以在 [这里](https://github.com/deepfunc/react-test-demo) 找到。
+> 为使文章尽量简短、清晰，下面的代码片段不是每个文件的完整内容，完整内容在 [这里](https://github.com/deepfunc/react-test-demo) 。
 
 
 
