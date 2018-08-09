@@ -3,6 +3,7 @@ import * as actions from '@/store/actions/bizToolbar';
 
 /* 测试 bizToolbar 相关 actions */
 describe('bizToolbar actions', () => {
+
     /* 测试更新搜索关键字 */
     test('should create an action for update keywords', () => {
         // 构建目标 action

@@ -1,8 +1,8 @@
 # Web 前端单元测试到底要怎么写？看这一篇就够了
 
-随着 Web 应用的复杂程度越来越高，很多公司越来越重视前端单元测试。我们能看到的大多数教程都会讲单元测试的重要性、一些有代表性的测试框架 api 怎么使用，但在实际项目中单元测试要怎么下手？测试用例应该包含哪些具体内容呢？
+随着 Web 应用的复杂程度越来越高，很多公司越来越重视前端单元测试。我们看到的大多数教程都会讲单元测试的重要性、一些有代表性的测试框架 api 怎么使用，但在实际项目中单元测试要怎么下手？测试用例应该包含哪些具体内容呢？
 
-这篇文章从一个真实的应用场景出发，从设计模式、代码结构来分析单元测试应该包含哪些内容，具体测试用例怎么写，希望看到的童鞋都能有所收获。
+本文从一个真实的应用场景出发，从设计模式、代码结构来分析单元测试应该包含哪些内容，具体测试用例怎么写，希望看到的童鞋都能有所收获。
 
 
 
@@ -49,7 +49,7 @@
 
 ## 单元测试部分介绍
 
-这里我们先讲一下用到了哪些测试框架和工具，主要内容包括：
+先讲一下用到了哪些测试框架和工具，主要内容包括：
 
 - `jest` ，测试框架
 - `enzyme` ，专测 react ui 层
@@ -89,6 +89,7 @@ import * as actions from '@/store/actions/bizToolbar';
 
 /* 测试 bizToolbar 相关 actions */
 describe('bizToolbar actions', () => {
+    
     /* 测试更新搜索关键字 */
     test('should create an action for update keywords', () => {
         // 构建目标 action
@@ -175,6 +176,7 @@ import reducer, { defaultState } from '@/store/reducers/bizTable';
 
 /* 测试 bizTable reducer */
 describe('bizTable reducer', () => {
+    
     /* 测试未指定 state 参数情况下返回当前缺省 state */
     test('should return the default state', () => {
         expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual(defaultState);
@@ -269,11 +271,12 @@ import * as defaultSettingsUtil from '@/utils/defaultSettingsUtil';
 
 /* 测试 bizTable selector */
 describe('bizTable selector', () => {
+    
     let state;
 
     beforeEach(() => {
         state = createState();
-        /* 每个用例执行完毕后重置缓存计算次数 */
+        /* 每个用例执行前重置缓存计算次数 */
         getBizTable.resetRecomputations();
     });
 
@@ -328,7 +331,7 @@ describe('bizTable selector', () => {
 
 ## sagas
 
-这里我用了 `redux-saga` 处理业务流，这里具体也就是异步调用 api 请求数据，处理成功结果很错误结果等。
+这里我用了 `redux-saga` 处理业务流，这里具体也就是异步调用 api 请求数据，处理成功结果和错误结果等。
 
 可能有的童鞋觉得搞这么复杂干嘛，异步请求用个 `redux-thunk` 不就完事了吗？别急，耐心看完你就明白了。
 
@@ -388,6 +391,7 @@ export function* onGetBizTableData() {
 
 ```javascript
 import { put, select } from 'redux-saga/effects';
+
 // ...
 
 /* 测试获取数据 */
@@ -444,7 +448,7 @@ test('request data, check success and fail', () => {
 
 这个测试用例相比前面的复杂了一些，我们先来说下测试 saga 的原理。前面说过 saga 实际上是返回各种声明式的 `effects` ，然后由引擎来真正执行。所以我们测试的目的就是要看 `effects` 的产生是否符合预期。那么`effect` 到底是个神马东西呢？其实就是字面量对象！
 
-我们可以用在业务代码同样的方式来产生这些字面量对象，对于字面量对象的断言就非常简单了，并且没有直接调用 api 层，就用不着做 mock 咯！这个测试用例的步骤就是利用生成器函数一步步的产生下一个 `effect` ，然后断言比较
+我们可以用在业务代码同样的方式来产生这些字面量对象，对于字面量对象的断言就非常简单了，并且没有直接调用 api 层，就用不着做 mock 咯！这个测试用例的步骤就是利用生成器函数一步步的产生下一个 `effect` ，然后断言比较。
 
 > 从上面的注释 3、4 可以看到，`redux-saga` 还提供了一些辅助函数来方便的处理分支断点。
 
@@ -477,6 +481,7 @@ import * as api from '@/services/bizApi';
 
 /* 测试 bizApi */
 describe('bizApi', () => {
+    
     let fetcherStub;
 
     beforeAll(() => {
@@ -612,6 +617,7 @@ import BizToolbar from '@/containers/BizToolbar';
 
 /* 测试容器组件 BizToolbar */
 describe('BizToolbar container', () => {
+    
     const initialState = {
         bizToolbar: {
             keywords: 'some keywords'
@@ -671,6 +677,7 @@ import BizTable from '@/components/BizTable';
 
 /* 测试 UI 组件 BizTable */
 describe('BizTable component', () => {
+    
     const defaultProps = {
         loading: false,
         pagination: Object.assign({}, {
@@ -755,3 +762,4 @@ describe('BizTable component', () => {
 >  
 >
 > 所以它还在我的手腕上。在写代码时，我用余光瞟见它。它一直提醒我，我做了写出整洁代码的承诺。
+

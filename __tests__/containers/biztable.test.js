@@ -6,6 +6,7 @@ import BizTable from '@/containers/BizTable';
 
 /* 测试容器组件 BizTable */
 describe('BizTable container', () => {
+
     const initialState = Immutable({
         bizTable: {
             loading: false,

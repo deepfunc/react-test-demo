@@ -5,6 +5,7 @@ import BizToolbar from '@/containers/BizToolbar';
 
 /* 测试容器组件 BizToolbar */
 describe('BizToolbar container', () => {
+
     const initialState = {
         bizToolbar: {
             keywords: 'some keywords'

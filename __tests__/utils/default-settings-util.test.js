@@ -1,6 +1,7 @@
 import * as defaultSettingsUtil from '@/utils/defaultSettingsUtil';
 
 describe('default settings utils', () => {
+
     test('check default pagination', () => {
         const pagination = Object.assign({}, defaultSettingsUtil.pagination);
 

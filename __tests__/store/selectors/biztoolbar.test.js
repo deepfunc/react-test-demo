@@ -3,6 +3,7 @@ import { getBizToolbar } from '@/store/selectors';
 
 /* 测试 bizToolbar selector */
 describe('bizToolbar selector', () => {
+
     const state = Immutable({
         bizToolbar: {
             keywords: 'some keywords'

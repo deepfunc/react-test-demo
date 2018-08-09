@@ -6,6 +6,7 @@ import BizToolbar from '@/components/BizToolbar';
 
 /* 测试 UI 组件 BizToolbar */
 describe('BizToolbar component', () => {
+
     const props = {
         keywords: 'some keywords',
         reload: sinon.fake(),

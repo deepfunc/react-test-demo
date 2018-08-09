@@ -3,6 +3,7 @@ import * as actions from '@/store/actions/bizTable';
 
 /* 测试 bizTable 相关 actions */
 describe('bizTable actions', () => {
+
     /* 测试获取数据请求 */
     test('should create an action for get data request', () => {
         const expectedAction = {type: type.BIZ_TABLE_GET_REQ};

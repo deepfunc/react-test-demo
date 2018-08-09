@@ -7,6 +7,7 @@ import BizTable from '@/components/BizTable';
 
 /* 测试 UI 组件 BizTable */
 describe('BizTable component', () => {
+
     const defaultProps = {
         loading: false,
         pagination: Object.assign({}, {

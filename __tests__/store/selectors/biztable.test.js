@@ -4,11 +4,12 @@ import * as defaultSettingsUtil from '@/utils/defaultSettingsUtil';
 
 /* 测试 bizTable selector */
 describe('bizTable selector', () => {
+
     let state;
 
     beforeEach(() => {
         state = createState();
-        /* 每个用例执行完毕后重置缓存计算次数 */
+        /* 每个用例执行前重置缓存计算次数 */
         getBizTable.resetRecomputations();
     });
 

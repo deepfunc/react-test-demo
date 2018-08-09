@@ -3,6 +3,7 @@ import reducer, { defaultState } from '@/store/reducers/bizToolbar';
 
 /* 测试 bizToolbar reducer */
 describe('bizToolbar reducer', () => {
+
     /* 测试未指定 state 参数情况下返回缺省 state */
     test('should return the default state', () => {
         expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual(defaultState);

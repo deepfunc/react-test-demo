@@ -4,6 +4,7 @@ import * as api from '@/services/bizApi';
 
 /* 测试 bizApi */
 describe('bizApi', () => {
+
     let fetcherStub;
 
     beforeAll(() => {

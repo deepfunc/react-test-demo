@@ -3,6 +3,7 @@ import reducer, { defaultState } from '@/store/reducers/bizTable';
 
 /* 测试 bizTable reducer */
 describe('bizTable reducer', () => {
+
     /* 测试未指定 state 参数情况下返回当前缺省 state */
     test('should return the default state', () => {
         expect(reducer(undefined, {type: 'UNKNOWN'})).toEqual(defaultState);
