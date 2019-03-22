@@ -1,4 +1,4 @@
-import 'babel-polyfill';
+import '@babel/polyfill';
 import 'es6-promise/auto';
 import React from 'react';
 import ReactDOM from 'react-dom';

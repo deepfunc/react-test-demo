@@ -4,12 +4,12 @@ import * as actions from '@/store/actions/bizToolbar';
 import BizToolbar from '@/components/BizToolbar';
 
 const mapStateToProps = (state) => ({
-    ...getBizToolbar(state)
+  ...getBizToolbar(state)
 });
 
 const mapDispatchToProps = {
-    reload: actions.reload,
-    updateKeywords: actions.updateKeywords
+  reload: actions.reload,
+  updateKeywords: actions.updateKeywords
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BizToolbar);

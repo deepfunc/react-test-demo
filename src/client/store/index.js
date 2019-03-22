@@ -7,14 +7,14 @@ let store = null;
 const sagaMiddleware = createSagaMiddleware();
 
 if (process.env.NODE_ENV === 'development') {
-    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-    store = createStore(
-        rootReducer,
-        composeEnhancers(applyMiddleware(sagaMiddleware))
-    );
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  store = createStore(
+    rootReducer,
+    composeEnhancers(applyMiddleware(sagaMiddleware))
+  );
 
 } else {
-    store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+  store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
 }
 
 sagaMiddleware.run(rootSaga);

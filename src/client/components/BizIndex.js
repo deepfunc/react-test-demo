@@ -4,10 +4,10 @@ import BizTable from '@/containers/BizTable';
 import styles from './styles/bizIndex.less';
 
 const BizIndex = () => (
-    <div className={styles.indexContainer}>
-        <BizToolbar/>
-        <BizTable/>
-    </div>
+  <div className={styles.indexContainer}>
+    <BizToolbar/>
+    <BizTable/>
+  </div>
 );
 
 export default BizIndex;

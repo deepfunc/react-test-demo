@@ -72,4 +72,4 @@ app.on('error', (err, ctx) => {
 });
 
 appDebug('current env: ' + app.env);
-app.listen(3000, () => appDebug('Listening on port: 3000'));
+app.listen(3000, () => console.log('Listening on port: 3000'));

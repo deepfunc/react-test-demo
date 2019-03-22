@@ -4,12 +4,12 @@ import * as actions from '@/store/actions/bizTable';
 import BizTable from '@/components/BizTable';
 
 const mapStateToProps = (state) => ({
-    ...getBizTable(state)
+  ...getBizTable(state)
 });
 
 const mapDispatchToProps = {
-    getData: actions.getBizTableData,
-    updateParams: actions.updateBizTableParams
+  getData: actions.getBizTableData,
+  updateParams: actions.updateBizTableParams
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(BizTable);
