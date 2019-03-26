@@ -140,3 +140,4 @@ $RECYCLE.BIN/
 
 /.idea/
 /dist/
+/package-lock.json
